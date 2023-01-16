@@ -1,9 +1,8 @@
 import { Router } from "express"
+import { ExchangeController } from './Controller/controller'
 
 const route = Router()
 
-route.get('/', (req, res) => {
-  return res.status(200).json({ message: 'Server is on' })
-})
+route.get('/', (req, res, next) => new ExchangeController(req, res, next).requestExchange())
 
 export default route
