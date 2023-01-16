@@ -13,8 +13,8 @@ export class ExchangeController {
   }
 
   async requestExchange() {
+    const { baseCoin, exchangeCoin } = this.req.body
     try {
-      const { baseCoin, exchangeCoin } = this.req.body
       const newClass =  new Api()
       const convertedValue = await newClass.exchange(baseCoin, exchangeCoin)
       
