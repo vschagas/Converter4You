@@ -8,3 +8,13 @@ services:
       - 3000:3000
     platform: linux/x86_64
     working_dir: /app-frontend
+    depends_on:
+      - backend
+
+  backend:
+    container_name: back_converter
+    build: ./backend
+    ports:
+      - 3001:3001
+    platform: linux/x86_64
+    working_dir: /app-backend
