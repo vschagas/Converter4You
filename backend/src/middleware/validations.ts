@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import Joi from 'joi'
+import { config } from 'process';
 
 const fieldMissing = 'Some required fields are missing';
 
@@ -22,8 +23,6 @@ const validateSchema = async (req:Request, res:Response, next: NextFunction) => 
   const { error } = schema.validate(requirements)
 
   if (error) {
-    console.log(error.details[0].message);
-    
     return res.status(400).json({ message: error.details[0].message })
   }
 
