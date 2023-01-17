@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 export default function Main() {
 
-  const [baseCoin, setBaseCoin] = useState('BRL')
-  const [exchangeCoin, setExchangeCoin] = useState('USD')
+  const [baseCoin, setBaseCoin] = useState('')
+  const [exchangeCoin, setExchangeCoin] = useState('')
   const [response, setResponse] = useState(undefined)
+  const [amount, setAmount] = useState('')
 
   async function handleData(e) {
 		// e.preventDefault();
@@ -22,22 +23,29 @@ export default function Main() {
     setResponse(response);
 	}
 
-  const log = () => {
-    console.log(response);
+  const log = (e) => {
+    console.log(e);
   }
 
+  const convertValue = (amount) => {
+    
+  }
+
+  const rates = ["USD", "BRL", "EUR", "BTC", "ETH" ]
   return (
     <div>
-      <input type="text"/>
+      <input type="text" onChange={(e) => setAmount(e.target.value)}/>
       <select>
-        <option onChange={e => setBaseCoin(e.target.value)} value="EUR">EUR</option>
+        {rates.map((rate) => <option>{rate}</option>)}
       </select>
     <input type="text" />
-      <select>
-        <option onChange={e => setExchangeCoin(e.target.value)} value="BRL">BRL</option>
+      <select onChange={console.log('ENTREI')}>
+        {rates.map((rate) => (
+          <option value={rate} onChange>{rate}</option>
+        ))}
       </select>
-      <button type='button'  onClick={() => handleData()}>Convert</button>
-      <button type='button' onClick={() => log()}>LOG</button>
+      {/* <button type='button'  onClick={() => handleData()}>Convert</button>
+      <button type='button' onClick={() => log()}>LOG</button> */}
     </div>
   )
 }

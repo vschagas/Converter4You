@@ -1,9 +1,8 @@
-import './App.css';
 import Main from './components/Main';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <h1>CONVERTER4YOU</h1>
       <Main />
     </div>
