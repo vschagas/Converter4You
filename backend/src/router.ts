@@ -5,6 +5,6 @@ import validateSchema from "./middleware/validations"
 
 const route = Router()
 
-route.get('/',validateSchema, (req, res, next) => new ExchangeController(req, res, next).requestExchange())
+route.post('/',validateSchema, (req, res, next) => new ExchangeController(req, res, next).requestExchange())
 
 export default route
